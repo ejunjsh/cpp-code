@@ -1,3 +1,7 @@
+#include <iostream>
+
+using namespace std;
+
 class Complex 
 {         
  
@@ -14,6 +18,8 @@ public:
     {
          m_real = 0.0;
          m_imag = 0.0;
+
+         cout<<"no args constructor"<<endl;
     } 
          
     // 一般构造函数（也称重载构造函数）
@@ -23,7 +29,9 @@ public:
     Complex(double real, double imag)
     {
          m_real = real;
-         m_imag = imag;         
+         m_imag = imag;       
+
+          cout<<"args constructor"<<endl;  
      }
      
     // 复制构造函数（也称为拷贝构造函数）
@@ -34,6 +42,8 @@ public:
         // 将对象c中的数据成员值复制过来
         m_real = c.m_real;
         m_imag  = c.m_imag;
+
+         cout<<"copy constructor"<<endl;
     }            
  
     // 类型转换构造函数，根据一个指定的类型的对象创建一个本类的对象
@@ -42,6 +52,8 @@ public:
     {
         m_real = r;
         m_imag = 0.0;
+
+         cout<<"type convert constructor"<<endl;
     }
  
     // 等号运算符重载
@@ -58,6 +70,8 @@ public:
         // 复制等号右边的成员到左边的对象中
         this->m_real = rhs.m_real;
         this->m_imag = rhs.m_imag;
+
+         cout<<"override operator constructor"<<endl;
              
         // 把等号左边的对象再次传出
         // 目的是为了支持连等 eg:    a=b=c 系统首先运行 b=c
@@ -82,7 +96,7 @@ int main()
     c1 = c3;
          
     // 调用类型转换构造函数
-    // 系统首先调用类型转换构造函数，将5.2创建为一个本类的临时对象，然后调用等号运算符重载，将该临时对象赋值给c1
+    // 系统首先调用类型转换构造函数，将5.2创建为一个本类的临时对象，然后调用等号运算符重载，将该临时对象赋值给c2
     c2 = 5.2;
        
     // 调用拷贝构造函数( 有下面两种调用方式) 
